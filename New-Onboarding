@@ -1,1 +1,25 @@
+NEW USER ONBOARDING
+
+# Create a new user with a home directory
+$ sudo useradd -m [user_name]    
+	# Set a password for the new user
+$ sudo passwd [user_name]        
+
+ssh-keygen This command is used to generate SSH key pairs for secure authentication.
+
+$ ssh-keygen
+
+To give the user access to the server via SSH using their public key, you can copy the public key to the authorized_keys file in the user's home directory. 
+If the authorized_keys file doesn't exist, you can create it:
+
+	# Create the .ssh directory if it doesn't exist
+
+$ sudo mkdir -p /home//[user_name]/.ssh   
+# Copy the public key to the authorized_keys file
+$ sudo cp ~/.ssh/id_rsa.pub /home/[user_name]/.ssh/authorized_keys   
+# Set ownership and permissions
+$ sudo chown -R [user_name]: [user_name] /home/[user_name]/.ssh   
+$ sudo chmod 700 /home/[user_name]/.ssh
+$ sudo chmod 600 /home/[user_name]/.ssh/authorized_keys
+
 
